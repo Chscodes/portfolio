@@ -145,7 +145,10 @@ export const skills = [
       "Nginx Reverse Proxy",
     ],
   },
-  { group: "Tools", items: ["Git", "GitHub", "VS Code", "Laragon", "XAMPP"] },
+  {
+    group: "Tools",
+    items: ["Git", "GitHub", "VS Code", "Visual Studio", "Laragon", "XAMPP"],
+  },
 ];
 
 export const education = {

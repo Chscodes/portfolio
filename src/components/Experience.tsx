@@ -1,4 +1,5 @@
 import { experience } from "../data";
+import Reveal from "./Reveal";
 
 export default function Experience() {
   return (
@@ -18,54 +19,53 @@ export default function Experience() {
 
         <div className="space-y-0">
           {experience.map((job, i) => (
-            <div
-              key={job.company}
-              className="grid md:grid-cols-[1fr_2fr] gap-6 md:gap-14 py-10 border-t border-line first:border-t-0 md:first:border-t"
-            >
-              <div>
-                <span className="font-mono text-xs text-ledger">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="font-display text-2xl text-paper mt-2">
-                  {job.company}
-                </h3>
-                <p className="text-muted text-sm mt-1">{job.role}</p>
-                <p className="font-mono text-xs text-muted mt-3 uppercase tracking-widest">
-                  {job.period}
-                </p>
-              </div>
+            <Reveal key={job.company} delay={i * 100}>
+              <div className="grid md:grid-cols-[1fr_2fr] gap-6 md:gap-14 py-10 border-t border-line first:border-t-0 md:first:border-t">
+                <div>
+                  <span className="font-mono text-xs text-ledger">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-display text-2xl text-paper mt-2">
+                    {job.company}
+                  </h3>
+                  <p className="text-muted text-sm mt-1">{job.role}</p>
+                  <p className="font-mono text-xs text-muted mt-3 uppercase tracking-widest">
+                    {job.period}
+                  </p>
+                </div>
 
-              <div>
-                <ul className="space-y-3">
-                  {job.points.map((p) => (
-                    <li
-                      key={p}
-                      className="flex gap-3 text-paper/90 leading-relaxed"
-                    >
-                      <span className="text-ledger mt-1.5 shrink-0">—</span>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {job.awards && job.awards.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mt-5">
-                    {job.awards.map((award) => (
-                      <span
-                        key={award.title}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-2.5 py-1 text-xs font-medium text-yellow-500"
+                <div>
+                  <ul className="space-y-3">
+                    {job.points.map((p) => (
+                      <li
+                        key={p}
+                        className="flex gap-3 text-paper/90 leading-relaxed"
                       >
-                        <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
-                        {award.title}
-                        <span className="text-yellow-500/60">
-                          · {award.year}
-                        </span>
-                      </span>
+                        <span className="text-ledger mt-1.5 shrink-0">—</span>
+                        <span>{p}</span>
+                      </li>
                     ))}
-                  </div>
-                )}
+                  </ul>
+
+                  {job.awards && job.awards.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-5">
+                      {job.awards.map((award) => (
+                        <span
+                          key={award.title}
+                          className="inline-flex items-center gap-1.5 rounded-full border border-yellow-500/20 bg-yellow-500/10 px-2.5 py-1 text-xs font-medium text-yellow-500"
+                        >
+                          <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                          {award.title}
+                          <span className="text-yellow-500/60">
+                            · {award.year}
+                          </span>
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0F1410;
-  --color-surface: #171D18;
-  --color-surface-2: #1E2620;
-  --color-line: #2B342C;
-  --color-ledger: #5CA97B;
-  --color-ledger-bright: #8FD1AA;
-  --color-paper: #EDE8D9;
-  --color-muted: #97A092;
-  --color-amber: #D6A24A;
+  --color-ink: #0f1410;
+  --color-surface: #171d18;
+  --color-surface-2: #1e2620;
+  --color-line: #2b342c;
+  --color-ledger: #5ca97b;
+  --color-ledger-bright: #8fd1aa;
+  --color-paper: #ede8d9;
+  --color-muted: #97a092;
+  --color-amber: #d6a24a;
 
-  --font-display: 'Newsreader', serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --font-body: 'Inter', sans-serif;
+  --font-display: "Newsreader", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-body: "Inter", sans-serif;
 }
 
 html {
@@ -49,5 +49,53 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .glow-blob {
+    animation: none !important;
+  }
+}
+
+/* Scroll-reveal: fade + rise into place, once, on entering the viewport */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slow, subtle drifting glow used behind the hero — kept low-opacity so it
+   reads as depth/atmosphere rather than a distraction */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(24px, -28px) scale(1.06);
+  }
+}
+.glow-blob {
+  animation: drift 16s ease-in-out infinite;
+}
+
+/* Only fade to grayscale on devices that truly hover (desktop) —
+   touch devices shouldn't get stuck in a permanently desaturated state */
+@media (hover: hover) and (pointer: fine) {
+  .hover-desaturate {
+    filter: grayscale(15%);
+    transition: filter 0.5s ease;
+  }
+  .hover-desaturate:hover {
+    filter: grayscale(0%);
   }
 }

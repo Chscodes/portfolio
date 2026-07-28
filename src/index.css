@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0F1410;
+  --color-surface: #171D18;
+  --color-surface-2: #1E2620;
+  --color-line: #2B342C;
+  --color-ledger: #5CA97B;
+  --color-ledger-bright: #8FD1AA;
+  --color-paper: #EDE8D9;
+  --color-muted: #97A092;
+  --color-amber: #D6A24A;
+
+  --font-display: 'Newsreader', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-ledger);
+  color: var(--color-ink);
+}
+
+/* subtle ledger-rule background texture */
+.ledger-rules {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 35px,
+    var(--color-line) 35px,
+    var(--color-line) 36px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

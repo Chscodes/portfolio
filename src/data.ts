@@ -147,7 +147,16 @@ export const skills = [
   },
   {
     group: "Tools",
-    items: ["Git", "GitHub", "VS Code", "Visual Studio", "Laragon", "XAMPP"],
+    items: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Visual Studio",
+      "Laragon",
+      "XAMPP",
+      "JIRA",
+      "Postman",
+    ],
   },
 ];
 
